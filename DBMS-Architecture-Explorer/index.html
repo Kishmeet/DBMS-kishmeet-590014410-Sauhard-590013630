@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Models & DBMS Architecture Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Data Models & DBMS Architecture Explorer</h1>
+    </header>
+
+    <section id="data-models">
+        <h2>Different Data Models</h2>
+        <p>Data models define how data is organized, stored, and accessed in a database management system (DBMS). Below
+            are explanations of four common data models with small examples.</p>
+
+        <h3>Relational Model</h3>
+        <p>The relational model organizes data into tables (relations) consisting of rows (tuples) and columns
+            (attributes). It uses keys to establish relationships between tables.</p>
+        <div class="example">
+            <p>Example: A simple "Employees" table.</p>
+            <pre>
+| ID | Name    | Department |
+|----|---------|------------|
+| 1  | Alice   | HR         |
+| 2  | Bob     | IT         |
+| 3  | Charlie | Sales      |
+            </pre>
+        </div>
+
+        <h3>Hierarchical Model</h3>
+        <p>The hierarchical model organizes data in a tree-like structure with parent-child relationships, where each
+            child has only one parent.</p>
+        <div class="example">
+            <p>Example: Company organization chart.</p>
+            <pre>
+CEO
+├── Manager HR
+│   └── Employee Alice
+└── Manager IT
+    └── Employee Bob
+            </pre>
+        </div>
+
+        <h3>Network Model</h3>
+        <p>The network model allows more complex relationships where a child can have multiple parents, represented as a
+            graph with records and sets.</p>
+        <div class="example">
+            <p>Example: Students and Courses (a student can enroll in multiple courses, a course can have multiple
+                students).</p>
+            <pre>
+Student A ── Enrolls ── Course 1
+Student A ── Enrolls ── Course 2
+Student B ── Enrolls ── Course 1
+            </pre>
+        </div>
+
+        <h3>Document Model</h3>
+        <p>The document model stores data in flexible, semi-structured documents (e.g., JSON or XML), allowing nested
+            structures without a fixed schema.</p>
+        <div class="example">
+            <p>Example: A user profile document.</p>
+            <pre>
+{
+  "id": 1,
+  "name": "Alice",
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown"
+  },
+  "hobbies": ["reading", "traveling"]
+}
+            </pre>
+        </div>
+    </section>
+
+    <section id="architectures">
+        <h2>Visual Comparison of Centralized vs Client-Server Architecture</h2>
+        <p>DBMS architectures define how the database system is structured in terms of processing and data distribution.
+            Below is a visual comparison using diagrams with flow animations.</p>
+
+        <div class="diagram-container">
+            <div class="diagram">
+                <h3>Centralized Architecture</h3>
+                <p>All processing and data storage occur on a single central machine. Users access it directly.</p>
+                <div class="diagram-image-container">
+                    <img src="assets/DBMS Centralized Architecture.svg"
+                        alt="Flowchart of DBMS centralized architecture">
+                </div>
+            </div>
+
+            <div class="diagram">
+                <h3>Client-Server Architecture</h3>
+                <p>Clients handle user interfaces and some processing, while the server manages the database and heavy
+                    operations. Communication occurs over a network.</p>
+                <div class="diagram-image-container">
+                    <img src="assets/DBMS Client Server Architecture.svg"
+                        alt="Flowchart of DBMS centralized architecture">
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

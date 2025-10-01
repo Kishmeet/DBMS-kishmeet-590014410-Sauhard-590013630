@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Query Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>SQL Query Simulator</h1>
+            <p class="subtitle">Execute SQL-like queries on JavaScript arrays</p>
+        </header>
+
+        <div class="main-content">
+            <div class="panel">
+                <h2>Query Editor</h2>
+                <div class="query-section">
+                    <textarea id="queryInput"
+                        placeholder="Enter your SQL query here...">SELECT * FROM employees</textarea>
+                    <div class="buttons">
+                        <button class="run-btn" onclick="runQuery()">Run Query</button>
+                        <button class="example-btn" onclick="loadExample()">Load Example</button>
+                        <button class="clear-btn" onclick="clearQuery()">Clear</button>
+                    </div>
+                </div>
+
+                <div class="schema-section">
+                    <h2>Available Tables</h2>
+                    <div class="schema-table">
+                        <h3>employees</h3>
+                        <p>Columns: id, name, department, salary, hire_date</p>
+
+                        <h3>orders</h3>
+                        <p>Columns: order_id, customer_id, product, amount, order_date</p>
+
+                        <h3>products</h3>
+                        <p>Columns: product_id, name, category, price, stock</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>Query Results</h2>
+                <div class="result-section">
+                    <div id="resultContainer"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>Basic Queries</h3>
+                <p>SELECT, WHERE, ORDER BY</p>
+            </div>
+            <div class="feature-card">
+                <h3>Aggregate Functions</h3>
+                <p>COUNT, SUM, AVG, GROUP BY, HAVING</p>
+            </div>
+            <div class="feature-card">
+                <h3>Set Operations</h3>
+                <p>UNION, INTERSECT, EXCEPT</p>
+            </div>
+            <div class="feature-card">
+                <h3>Nested Queries</h3>
+                <p>Subqueries with subselects</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>SQL Query Simulator | Implemented with HTML, CSS, and JavaScript</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

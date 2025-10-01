@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadlock & Recovery Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Deadlock & Recovery Visualizer</h1>
+            <p class="subtitle">Visualize process-resource allocation, detect deadlocks, and explore recovery strategies
+            </p>
+        </header>
+
+        <div class="main-content">
+            <div class="panel">
+                <h2>Process-Resource Allocation Graph</h2>
+                <div class="graph-container" id="graph">
+                    <div id="graph-content">
+                        <!-- Process and resource nodes will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #2196f3;"></div>
+                        <span>Process</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #9c27b0;"></div>
+                        <span>Resource</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #4caf50;"></div>
+                        <span>Allocation</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #ff9800;"></div>
+                        <span>Request</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>System Controls</h2>
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="processCount">Number of Processes</label>
+                        <input type="number" id="processCount" min="2" max="6" value="3">
+                    </div>
+
+                    <div class="control-group">
+                        <label for="resourceCount">Number of Resources</label>
+                        <input type="number" id="resourceCount" min="2" max="6" value="3">
+                    </div>
+
+                    <div class="control-group">
+                        <label for="resourceType">Resource Type</label>
+                        <select id="resourceType">
+                            <option value="single">Single Instance</option>
+                            <option value="multiple">Multiple Instances</option>
+                        </select>
+                    </div>
+
+                    <button id="generateBtn">Generate New Graph</button>
+                    <button id="detectBtn">Detect Deadlock</button>
+
+                    <div class="control-group">
+                        <label>Deadlock Status</label>
+                        <div id="deadlockStatus" class="status">No deadlock detected</div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>Recovery Strategies</h3>
+                        <div class="recovery-options">
+                            <button id="abortBtn" class="recovery-btn abort">Process Abortion</button>
+                            <button id="preemptBtn" class="recovery-btn preempt">Resource Preemption</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel algorithm-section">
+                <h2>Banker's Algorithm</h2>
+                <p>Check if the current system state is safe or unsafe using Banker's Algorithm</p>
+
+                <div class="control-group">
+                    <label>Available Resources</label>
+                    <div id="availableResources">[3, 3, 2]</div>
+                </div>
+
+                <div class="matrix-container">
+                    <h3>Allocation Matrix</h3>
+                    <table class="matrix-table" id="allocationMatrix">
+                        <thead>
+                            <tr>
+                                <th>Process</th>
+                                <th>R1</th>
+                                <th>R2</th>
+                                <th>R3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>P0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>P1</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>P2</td>
+                                <td>3</td>
+                                <td>0</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>P3</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>P4</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="matrix-container">
+                    <h3>Maximum Matrix</h3>
+                    <table class="matrix-table" id="maxMatrix">
+                        <thead>
+                            <tr>
+                                <th>Process</th>
+                                <th>R1</th>
+                                <th>R2</th>
+                                <th>R3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>P0</td>
+                                <td>7</td>
+                                <td>5</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>P1</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>P2</td>
+                                <td>9</td>
+                                <td>0</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>P3</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>P4</td>
+                                <td>4</td>
+                                <td>3</td>
+                                <td>3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button id="bankerBtn">Run Banker's Algorithm</button>
+                <div id="bankerStatus" class="status">Algorithm not run yet</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Deadlock & Recovery Visualizer | Educational Tool for Operating Systems Concepts</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

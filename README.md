@@ -3,8 +3,8 @@
 ## Authors
 The project has been made by:
 
-- Sauhard Semalty
-- Kishmeet Singh Khurana
+- Sauhard Semalty (SAP: 590013630)
+- Kishmeet Singh Khurana (SAP: 590014410)
 
 ## Navigation
 

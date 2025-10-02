@@ -345,7 +345,7 @@ function checkLosslessJoin(attributes, fds, candidateKeys) {
 }
 
 function checkDependencyPreservation(attributes, fds, candidateKeys) {
-    // Simplified check
+    // Simplified check (can put some checks if you wish)
     return true;
 }
 

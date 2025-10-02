@@ -29,9 +29,11 @@
                 <div class="form-group">
                     <label for="functional-dependencies">Functional Dependencies (one per line):</label>
                     <textarea id="functional-dependencies" placeholder="e.g., A → B, C
-B → D"></textarea>
+B, C → D
+A, D -> E"></textarea>
                     <div id="unknown-attributes-message"><!-- Error message will be placed here dynamically --></div>
-                    <p class="example">Example: StudentID → Name<br>Course → Instructor<br>Instructor → Department</p>
+                    <p class="example">Example: StudentID → Name<br>Course → Instructor<br>Course, Instructor →
+                        Department</p>
                 </div>
 
                 <button id="compute-btn">Compute Normalization</button>
